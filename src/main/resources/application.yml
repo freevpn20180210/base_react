@@ -1,0 +1,39 @@
+server:
+  port: 80
+#  servlet:
+#    context-path: /watch
+
+spring:
+  mvc:
+    view:
+      prefix: /views/
+    thymeleaf:
+      cache: false
+  datasource:
+    url: jdbc:mysql://localhost/react?useSSL=false&useUnicode=true&characterEncoding=utf-8&autoReconnect=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  jpa:
+    properties:
+      hibernate:
+        dialect: com.lyf.config.MySQL5LocalDialect
+        show_sql: true
+        format_sql: false
+        autoReconnect: true
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: true
+      ddl-auto: update
+
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
+        sql: trace
